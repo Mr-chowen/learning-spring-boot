@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd">
+    	
+	<!-- 	构造方法实例化bean  -->
+	<bean id="constructorInstance" class="com.bean.BeanClass" scope="singleton"/>
+	
+	<!-- 	静态工厂实例化bean	 -->
+	<bean id="staticFactoryInstance" class="com.bean.BeanStaticFactory" factory-method="createInstance"/>
+	
+	<!-- 	配置工厂	 -->
+	<bean id="factoryInstance" class="com.bean.BeanInstanceFactory"/>
+	
+	<!-- 	使用factory-bean属性指定配置工厂，factory-method指定使用工厂中的哪一个方法实例化bean	 -->
+	<bean id="instanceFactoryInstance" factory-bean="factoryInstance" factory-method="createBeanClassFactory"/>
+	<!-- 	配置bean，使用init-method属性指定初始化方法，使用destroy-method属性指定销毁方法	 -->
+	<bean id="beanLife" class="com.bean.life.BeanLife" init-method="initMyself" destroy-method="destroyMyself"/>
+</beans>
