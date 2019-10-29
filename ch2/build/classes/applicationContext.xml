@@ -17,4 +17,68 @@
 	<bean id="instanceFactoryInstance" factory-bean="factoryInstance" factory-method="createBeanClassFactory"/>
 	<!-- 	配置bean，使用init-method属性指定初始化方法，使用destroy-method属性指定销毁方法	 -->
 	<bean id="beanLife" class="com.bean.life.BeanLife" init-method="initMyself" destroy-method="destroyMyself"/>
+
+	<!-- 	使用构造方法注入方式装配ComplexUser实例user	 -->
+	<bean id="auser" class="com.assemble.ComplexUser">
+		<constructor-arg index="0" value="Json"/>
+		<constructor-arg index="1">
+			<list>
+				<value>唱歌</value>
+				<value>跳舞</value>
+				<value>学习</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<map>
+				<entry key="DL" value="大连"/>
+				<entry key="SH" value="上海"/>
+				<entry key="BJ" value="北京"/>
+			</map>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<set>
+				<value>春雨</value>
+				<value>夏阳</value>
+				<value>秋风</value>
+				<value>冬雪</value>
+			</set>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<array>
+				<value>雪燕</value>
+				<value>海燕</value>
+			</array>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 	使用属性的setter方法注入方式装配ComplexUser实例user 	-->
+	<bean id="buser" class="com.assemble.ComplexUser">
+		<property name="uname" value="Bella"/>
+		<property name="hobbies">
+			<list>
+				<value>学习</value>
+				<value>看书</value>
+			</list>
+		</property>
+		<property name="residenceMap">
+			<map>
+				<entry key="shenzhen" value="深圳"/>
+				<entry key="guangzhou" value="广州"/>
+				<entry key="nanjing" value="南京"/>
+			</map>
+		</property>
+		<property name="aliasSet">
+			<set>
+				<value>晨曦</value>
+				<value>骄阳</value>
+				<value>夕阳</value>
+			</set>
+		</property>
+		<property name="array">
+			<array>
+				<value>x</value>
+				<value>y</value>
+			</array>
+		</property>
+	</bean>
 </beans>
