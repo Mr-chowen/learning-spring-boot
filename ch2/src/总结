@@ -21,4 +21,4 @@ bean的生命周期：
 	
 bean的装配方式：
 	1、基于XML配置的装配：使用构造方法注入和使用属性的setter方法注入
-	2、基于注解方式装配：@Component()、@Resource、@Repository、@Service、@Controller、@Autowired、@Qualifier(与@Autowired配合使用)
+	2、基于注解方式装配：@Component、@Resource、@Repository、@Service、@Controller、@Autowired、@Qualifier(与@Autowired配合使用)
