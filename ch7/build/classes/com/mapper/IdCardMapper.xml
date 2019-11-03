@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.IdcardDao">
+	<select id="selectCodeById" parameterType="Integer" resultType="com.pojo.Idcard">
+		select * from idcard where id=#{id}
+	</select>
+	<insert id="addIdcard" parameterType="com.pojo.Idcard">
+		insert into idcard(code) values(#{code})
+	</insert>
+</mapper>

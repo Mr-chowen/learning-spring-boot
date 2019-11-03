@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+	<!-- 	第一种：一对一级联查询 -->
+	<resultMap type="com.pojo.User" id="cardAndUserA">
+		<id property="id" column="id"/>
+		<result property="uname" column="uname"/>
+		<result property="usex" column="usex"/>
+		<association property="card" column="idcard_id" javaType="com.pojo.Idcard"
+		select="com.dao.IdcardDao.selectCodeById"/>		
+	</resultMap>
+	<select id="selectUserById1" parameterType="Integer" resultMap="cardAndUserA">
+		select * from user where uid=#{uid}
+	</select>
+	<!-- 	第二种：一对一级联查询 -->
+		<resultMap type="com.pojo.User" id="cardAndUserB">
+			<id property="id" column="id"/>
+			<result property="uname" column="uname"/>
+			<result property="usex" column="usex"/>
+			<association property="card" javaType="com.pojo.Idcard">
+				<id property="id" column="idcard_id"/>
+				<result property="code" column="code"/>
+			</association>
+		</resultMap>
+		<select id="selectUserById2" parameterType="Integer" resultMap="cardAndUserB">
+			select u.*,ic.code from user u,idcard ic where u.idcard_id=ic.id and u.uid=#{uid}
+		</select>
+	 
+	 	<!-- 	第三种：一对一级联查询 -->
+	 	<select id="selectUserById3" parameterType="Integer" resultType="com.pojo.SelectUserById">
+	 		select u.*,ic.code from user u,idcard ic where u.idcard_id=ic.id and u.uid=#{uid}
+	 	</select>
+	 
+</mapper>
