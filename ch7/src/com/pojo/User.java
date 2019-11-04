@@ -1,10 +1,13 @@
 package com.pojo;
 
+import java.util.List;
+
 public class User {
 	private Integer uid;
 	private String uname;
 	private String usex;
 	private Idcard card;
+	private List<Orders> ordersList;
 	public Integer getUid() {
 		return uid;
 	}
@@ -29,9 +32,18 @@ public class User {
 	public void setCard(Idcard card) {
 		this.card = card;
 	}
+	
+	
+	public List<Orders> getOrdersList() {
+		return ordersList;
+	}
+	public void setOrdersList(List<Orders> ordersList) {
+		this.ordersList = ordersList;
+	}
 	@Override
 	public String toString() {
-		return "User [uid=" + uid + ", uname=" + uname + ", usex=" + usex + ", card=" + card + "]";
+		return "User [uid=" + uid + ", uname=" + uname + ", usex=" + usex + ", card=" + card + ", ordersList="
+				+ ordersList + "]";
 	}
 	
 	

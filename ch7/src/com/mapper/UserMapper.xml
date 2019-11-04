@@ -32,5 +32,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	<select id="selectUserById3" parameterType="Integer" resultType="com.pojo.SelectUserById">
 	 		select u.*,ic.code from user u,idcard ic where u.idcard_id=ic.id and u.uid=#{uid}
 	 	</select>
-	 
+	 	
+	 	<!--	第一种：一对多根据uid查询用户及其关联的订单信息  -->
+	 	<resultMap type="com.pojo.User" id="userAndOrderA">
+	 		<id property="uid" column="uid"/>
+	 		<result property="uname" column="uname"/>
+	 		<result property="usex" column="usex"/>
+	 		<collection property="ordersList" ofType="com.pojo.Orders" column="uid"
+	 		select="com.dao.OrdersDao.selectOrdersById"/>
+	 	</resultMap>
+	 	<select id="selectUserOrdersById1" parameterType="Integer" resultMap="userAndOrderA">
+	 		select * from user where uid=#{id}
+	 	</select>
+	 	
+	 	<!--	第二种：一对多根据uid查询用户及其关联的订单信息  -->
+	 	<resultMap type="com.pojo.User" id="userAndOrderB">
+	 		<id property="uid" column="uid"/>
+	 		<result property="uname" column="uname"/>
+	 		<result property="usex" column="usex"/>
+	 		<collection property="ordersList" ofType="com.pojo.Orders">
+	 			<id property="id" column="id"/>
+	 			<result property="ordersn" column="ordersn"/>
+	 		</collection>
+	 	</resultMap>
+	 	<select id="selectUserOrdersById2" parameterType="Integer" resultMap="userAndOrderB">
+	 		select u.*,o.id,o.ordersn from user u,orders o where u.uid=o.user_id and u.uid=#{id}
+	 	</select>
+	 	
+	 	<!--	第三种：一对多根据uid查询用户及其关联的订单信息  -->
+	 	<select id="selectUserOrdersById3" parameterType="Integer" resultType="com.pojo.SelectUserOrderById">
+	 		select u.*,o.id,o.ordersn from user u,orders o where u.uid=o.user_id and u.uid=#{id}
+	 	</select>
+	 	
 </mapper>

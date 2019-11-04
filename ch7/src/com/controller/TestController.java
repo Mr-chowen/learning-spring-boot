@@ -11,7 +11,11 @@ public class TestController {
 		
 		UserController uc=(UserController) appCon.getBean("userController");
 	
+		OrdersController oc=(OrdersController) appCon.getBean("ordersController");
+	
 		uc.test();
+		System.out.println("\n一对多级联查询"+"\n");
+		oc.test();
 
 	}
 }
