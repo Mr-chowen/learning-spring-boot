@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>用户列表</h1>
-	<a href="<c:url value="${pageContext.request.contextPath }/user/input"/>">继续添加</a>
+	<a href="<c:url value="input"/>">继续添加</a>
 	<table>
 		<tr>
 			<th>用户名</th>
