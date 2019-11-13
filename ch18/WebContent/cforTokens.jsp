@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forTokens items="chenheng1:chenheng2:chenheng3" delims=":" var="name">
+	<c:forTokens items="tony:jhon:tom" delims=":" var="name">
 		${name}<br>
 	</c:forTokens>
 </body>

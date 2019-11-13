@@ -13,7 +13,7 @@
 			<th>Square</th>
 			<th>Index</th>
 		</tr>
-		<c:forEach var="x" varStatus="status" begin="0" end="10" step="2">
+		<c:forEach var="x" varStatus="status" begin="0" end="10" step="3">
 			<tr>
 				<td>${x}</td>
 				<td>${x * x}</td>

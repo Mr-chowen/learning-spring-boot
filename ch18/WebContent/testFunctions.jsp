@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:set var="my" value="${fn:split('I am studying', ' ') }"/>
+	<c:set var="my" value="${fn:split('I am sing', ' ') }"/>
 	<c:forEach var="myArrayElement" items="${my }">
 		${myArrayElement}<br>
 	</c:forEach>

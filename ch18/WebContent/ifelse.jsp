@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:set value="if" var="firstNumber" scope="request" />
-	<c:set value="else" var="secondNumber" scope="request" />
+	<c:set value="5" var="firstNumber" scope="request" />
+	<c:set value="1" var="secondNumber" scope="request" />
 	<c:if test="${firstNumber>secondNumber}">
 		最大值为${firstNumber}
-</c:if>
+	</c:if>
 	<c:if test="${firstNumber<secondNumber}">
 		最大值为${secondNumber}
-</c:if>
+	</c:if>
 	<c:choose>
 		<c:when test="${firstNumber<secondNumber}">
 			最小值为${firstNumber}
