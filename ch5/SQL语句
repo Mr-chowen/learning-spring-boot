@@ -1,5 +1,0 @@
-create table user(
-	uid int(10) auto_increment primary key,
-    uname varchar(20),
-    usex varchar(10)
-);
