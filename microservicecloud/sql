@@ -1,0 +1,9 @@
+create table department(
+	id bigint auto_increment primary key,
+    dname varchar(25),
+    dsource varchar(25)
+)engine=InnoDB char set=utf8mb4;
+
+insert into department(dname,dsource) values("开发部",database());
+insert into department(dname,dsource) values("销售部",database());
+insert into department(dname,dsource) values("实施部",database());
