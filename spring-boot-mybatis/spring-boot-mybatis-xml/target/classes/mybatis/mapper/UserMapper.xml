@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xust.springboot.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.xust.springboot.entity.Users">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="passWord" property="passWord" jdbcType="VARCHAR"/>
+        <result column="userSex" property="userSex" javaType="com.xust.springboot.enums.UserSexEnum"/>
+        <result column="nickName" property="nickName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,userName,passWord,userSex,nickName
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_users
+    </select>
+
+    <select id="findById" parameterType="Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_users
+        where id=#{id}
+    </select>
+
+    <insert id="add" parameterType="com.xust.springboot.entity.Users">
+        insert into
+          t_users
+          (userName,passWord,userSex,nickName)
+        VALUES
+          (#{userName},#{passWord},#{userSex},#{nickName})
+    </insert>
+
+    <update id="edit" parameterType="com.xust.springboot.entity.Users">
+        update
+          t_users
+        set
+          <if test="userName != null">userName = #{userName},</if>
+          <if test="passWord != null">passWord = #{passWord},</if>
+          nickName = #{nickName}
+        where
+         id = #{id}
+    </update>
+
+    <delete id="remove" parameterType="Long">
+        delete  from
+          t_users
+        where
+          id = #{id}
+    </delete>
+</mapper>
