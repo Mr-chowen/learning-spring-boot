@@ -1,18 +1,24 @@
 package com.xust.entity;
 
-import com.xust.enums.UserSexEnums;
+import com.xust.enums.UserSexEnum;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
-
 @Data
-@NoArgsConstructor
 @ToString
+@NoArgsConstructor
 public class User implements Serializable {
 
     private static final Long serialVersionUID=1L;
+
+    public User(String userName, String passWord, UserSexEnum userSex, String nickName) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.userSex = userSex;
+        this.nickName = nickName;
+    }
 
     private Long id;
 
@@ -20,14 +26,7 @@ public class User implements Serializable {
 
     private String passWord;
 
-    private UserSexEnums userSex;
+    private UserSexEnum userSex;
 
     private String nickName;
-
-    public User(String userName, String passWord, UserSexEnums userSex, String nickName) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.userSex = userSex;
-        this.nickName = nickName;
-    }
 }

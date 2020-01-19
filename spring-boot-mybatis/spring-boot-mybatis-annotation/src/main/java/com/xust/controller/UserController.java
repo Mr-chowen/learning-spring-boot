@@ -11,14 +11,13 @@ import java.util.List;
 
 @RestController
 public class UserController {
-
     @Autowired
     private UserMapper userMapper;
 
     @RequestMapping("/list")
     public List<User> list(){
-       List<User> users = userMapper.findAll();
-       return users;
+        List<User> users = userMapper.findAll();
+        return users;
     }
 
     @RequestMapping("/get/{id}")
@@ -38,8 +37,7 @@ public class UserController {
     }
 
     @RequestMapping("/delete/{id}")
-    public void delete(@PathVariable("id") long id){
+    public void remove(@PathVariable("id") long id){
         userMapper.delete(id);
     }
-
 }
