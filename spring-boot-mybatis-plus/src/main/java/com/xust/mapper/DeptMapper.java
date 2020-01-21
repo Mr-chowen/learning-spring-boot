@@ -20,5 +20,5 @@ public interface DeptMapper extends BaseMapper<Dept> {
             @Result(property = "dept_local",column = "dept_local")
     })
     Dept selectByName(String deptName);
-    
+
 }
