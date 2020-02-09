@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/brand")
-@Api(tags = "PmsBrandController",description = "商品品牌管理")
+@Api(tags = "PmsBrandController")
 public class PmsBrandController {
     private static final Logger LOGGER= LoggerFactory.getLogger(PmsBrandController.class);
 

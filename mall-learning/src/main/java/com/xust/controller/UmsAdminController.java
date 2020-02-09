@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Api(tags = "UmsAdminController",description = "后台用户登录")
+@Api(tags = "UmsAdminController")
 @Controller
 @RequestMapping("/admin")
 public class UmsAdminController {

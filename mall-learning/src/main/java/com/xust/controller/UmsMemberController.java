@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Api(tags = "UmsMemberController",description = "会员登录管理")
+@Api(tags = "UmsMemberController")
 @RequestMapping("/sso")
 public class UmsMemberController {
     @Autowired

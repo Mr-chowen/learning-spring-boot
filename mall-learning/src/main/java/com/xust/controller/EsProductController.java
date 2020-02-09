@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@Api(tags = "EsProductController",description = "搜索商品管理")
+@Api(tags = "EsProductController")
 @RequestMapping("/esProduct")
 public class EsProductController {
     @Autowired
