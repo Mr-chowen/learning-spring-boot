@@ -85,7 +85,7 @@ public class PmsBrandController {
         }
     }
 
-    @PreAuthorize("hasAuthority('pms:brand:read')")
+
     @ResponseBody
     @ApiOperation("分页查询品牌列表")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
@@ -95,7 +95,7 @@ public class PmsBrandController {
         return CommonResult.success(CommonPage.restPage(brandList));
     }
 
-    @PreAuthorize("hasAuthority('pms:brand:read')")
+
     @ResponseBody
     @ApiOperation("获取指定ID品牌信息")
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
