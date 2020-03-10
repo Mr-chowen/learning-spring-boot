@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xust.mapper.JobLevelMapper" >
+    <resultMap id="BaseResultMap" type="com.xust.model.JobLevel">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="titleLevel" property="titleLevel" jdbcType="VARCHAR"/>
+        <result column="createDate" property="createDate" jdbcType="TIMESTAMP"/>
+        <result column="enabled" property="enabled" jdbcType="BIT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id,name,titleLevel,createDate,enabled
+    </sql>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from joblevel where id = #{id}
+    </delete>
+
+    <delete id="deleteJobLevelsByIds" >
+        delete from joblevel where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <insert id="insert" parameterType="com.xust.model.JobLevel">
+        insert into joblevel(id,name,titleLevel,createDate,enabled)
+        values (#{id},#{name},#{titleLevel},#{createDate},#{enabled})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.xust.model.JobLevel">
+        insert  into joblevel
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="titleLevel != null" >
+                titleLevel,
+            </if>
+            <if test="createDate != null" >
+                createDate,
+            </if>
+            <if test="enabled != null" >
+                enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="titleLevel != null" >
+                #{titleLevel,jdbcType=CHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null" >
+                #{enabled,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from joblevel
+        where id = #{id}
+    </select>
+
+    <select id="getAllJobLevels" resultMap="BaseResultMap">
+        select * from joblevel;
+    </select>
+
+    <update id="updateById" parameterType="com.xust.model.JobLevel">
+        update joblevel
+        set name = #{name}, titleLevel = #{titleLevel,jdbcType=VARCHAR}, createDate = #{createDate}, enabled = #{enabled}
+        where id = #{id}
+    </update>
+
+    <update id="updateByIdSelective" parameterType="com.xust.model.JobLevel">
+        update joblevel
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="titleLevel != null" >
+                titleLevel = #{titleLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                createDate = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="enabled != null" >
+                enabled = #{enabled,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

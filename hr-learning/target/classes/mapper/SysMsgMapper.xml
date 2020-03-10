@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xust.mapper.SysMsgMapper" >
+    <resultMap id="BaseResultMap" type="com.xust.model.SysMsg">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="mid" property="mid" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="hrid" property="hrid" jdbcType="INTEGER"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+      id,mid,type,hrid,state
+    </sql>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from sysmsg
+        where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.xust.model.SysMsg">
+        insert into sysmsg (id,mid,type,hrid,state)
+        values (#{id},#{mid},#{type},#{hrid},#{state})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.xust.model.SysMsg">
+        insert into sysmsg
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="mid != null">
+                mid,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="hrid">
+                hrid,
+            </if>
+            <if test="state">
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="mid != null">
+                #{mid},
+            </if>
+            <if test="type != null">
+                #{type},
+            </if>
+            <if test="hrid">
+                #{hrid},
+            </if>
+            <if test="state">
+                #{state},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from sysmsg
+        where id = #{id}
+    </select>
+
+    <update id="updateById" parameterType="com.xust.model.SysMsg">
+        update sysmsg
+        set mid = #{mid},type = #{type},hrid = #{hrid},state = #{state}
+        where id = #{id}
+    </update>
+
+    <update id="updateByIdSelective" parameterType="com.xust.model.SysMsg">
+        update sysmsg
+        <set>
+            <if test="mid != null">
+                mid = #{mid},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="hrid != null">
+                hrid = #{hrid},
+            </if>
+            <if test="state != null">
+                state = #{state},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xust.mapper.NationMapper" >
+    <resultMap id="BaseResultMap" type="com.xust.model.Nation">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">id,name</sql>
+    <select id="getAllNations" resultMap="BaseResultMap">
+        select * from  nation;
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from nation
+        where id = #{id};
+    </select>
+
+    <insert id="insert" parameterType="com.xust.model.Nation">
+        insert  into nation(id,name)
+        values (#{id},#{name})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.xust.model.Nation">
+        insert  into nation
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id},
+            </if>
+            <if test="name != null" >
+                #{name},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.xust.model.Nation">
+        update nation
+        set name = #{name}
+        where id = #{id}
+    </update>
+
+    <update id="updateByIdSelective" parameterType="com.xust.model.Nation">
+        update nation
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from nationv where id = #{id}
+    </delete>
+</mapper>
