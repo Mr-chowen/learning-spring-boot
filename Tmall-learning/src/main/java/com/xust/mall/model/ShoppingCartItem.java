@@ -1,15 +1,10 @@
 package com.xust.mall.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.util.Date;
 
-@Data
-@ToString
-@Accessors(chain = true)
+
 public class ShoppingCartItem {
     private Long cartItemId;
 
@@ -26,4 +21,60 @@ public class ShoppingCartItem {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+
+    public Long getCartItemId() {
+        return cartItemId;
+    }
+
+    public void setCartItemId(Long cartItemId) {
+        this.cartItemId = cartItemId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Long goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public Integer getGoodsCount() {
+        return goodsCount;
+    }
+
+    public void setGoodsCount(Integer goodsCount) {
+        this.goodsCount = goodsCount;
+    }
+
+    public Byte getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Byte isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

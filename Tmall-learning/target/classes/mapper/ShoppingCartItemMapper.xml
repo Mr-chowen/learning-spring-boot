@@ -98,7 +98,7 @@
         select
         <include refid="Base_Column_List"/>
         from tb_mall_shopping_cart_item
-        where user_id = #{newBeeMallUserId,jdbcType=BIGINT} and goods_id=#{goodsId,jdbcType=BIGINT} and is_deleted = 0
+        where user_id = #{mallUserId,jdbcType=BIGINT} and goods_id=#{goodsId,jdbcType=BIGINT} and is_deleted = 0
         limit 1
     </select>
 
@@ -106,7 +106,7 @@
         select
         <include refid="Base_Column_List"/>
         from tb_mall_shopping_cart_item
-        where user_id = #{newBeeMallUserId,jdbcType=BIGINT} and is_deleted = 0
+        where user_id = #{mallUserId,jdbcType=BIGINT} and is_deleted = 0
         limit #{number}
     </select>
     
@@ -114,7 +114,7 @@
         select
         count(*)
         from tb_mall_shopping_cart_item
-        where user_id = #{newBeeMallUserId,jdbcType=BIGINT} and is_deleted = 0
+        where user_id = #{mallUserId,jdbcType=BIGINT} and is_deleted = 0
     </select>
 
     <update id="updateByPrimaryKey" parameterType="com.xust.mall.model.ShoppingCartItem">

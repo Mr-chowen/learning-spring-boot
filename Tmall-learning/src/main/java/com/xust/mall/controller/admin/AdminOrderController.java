@@ -73,7 +73,7 @@ public class AdminOrderController {
      * @param id
      * @return
      */
-    @GetMapping("/orders/info/{id}")
+    @GetMapping("/order-items/{id}")
     @ResponseBody
     public CommonResult info(@PathVariable("id") Long id){
         List<OrderItemVO> orderItemVOS = orderService.getOrderItems(id);

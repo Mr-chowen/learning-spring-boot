@@ -2,7 +2,7 @@ package com.xust.mall.mapper;
 
 import com.xust.mall.common.utils.PageUtil;
 import com.xust.mall.model.Goods;
-import com.xust.mall.model.StockNum;
+import com.xust.mall.model.StockNumDTO;
 import org.springframework.stereotype.Component;
 
 import org.apache.ibatis.annotations.Param;
@@ -37,7 +37,7 @@ public interface GoodsMapper {
 
     int batchInsert(@Param("goodsList") List<Goods> goodsList);
 
-    int updateStockNum(@Param("stockNums") List<StockNum> stockNums);
+    int updateStockNum(@Param("stockNumDTOS") List<StockNumDTO> stockNumDTOS);
 
     int batchUpdateSellStatus(@Param("orderIds")Long[] orderIds,@Param("sellStatus") int sellStatus);
 }

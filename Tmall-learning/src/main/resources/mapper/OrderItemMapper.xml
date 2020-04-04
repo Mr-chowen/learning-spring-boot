@@ -88,7 +88,9 @@
     </insert>
 
     <insert id="insertBatch" parameterType="com.xust.mall.model.OrderItem">
-        insert into tb_mall_order_item (order_id, goods_id, goods_name, goods_cover_img, selling_price,goods_count)
+        insert into tb_mall_order_item (order_id, goods_id,
+                    goods_name, goods_cover_img, selling_price,
+                    goods_count)
         values
         <foreach collection="orderItems" item="orderItem" separator=",">
             (#{orderItem.orderId,jdbcType=BIGINT}, #{orderItem.goodsId,jdbcType=BIGINT},

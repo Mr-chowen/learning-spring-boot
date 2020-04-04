@@ -22,24 +22,11 @@ import java.util.stream.Collectors;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TmallLearningApplicationTests {
-    @Autowired
-    IndexConfigMapper indexConfigMapper;
 
-    @Autowired
-    GoodsMapper goodsMapper;
 
     @Test
     public void contextLoads() {
-        List<IndexConfig> configs = indexConfigMapper.selectIndexConfigByTypeAndNum(3,4);
-        List<Long> goodsIds = configs.stream().map(IndexConfig::getGoodsId).collect(Collectors.toList());
-        List<Goods> goods = goodsMapper.selectByPrimaryKeys(goodsIds);
-        for (Goods good: goods) {
-            System.out.println(good);
-        }
-        List<IndexGoodsConfigVO> indexGoodsConfigVOS = BeanUtil.copyList(goods,IndexGoodsConfigVO.class);
-        for (IndexGoodsConfigVO g: indexGoodsConfigVOS) {
-            System.out.println(g.getGoodsName());
-        }
+
 
     }
 

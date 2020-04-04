@@ -16,7 +16,7 @@ import com.xust.mall.mapper.ShoppingCartItemMapper;
 import com.xust.mall.model.Goods;
 import com.xust.mall.model.Order;
 import com.xust.mall.model.OrderItem;
-import com.xust.mall.model.StockNum;
+import com.xust.mall.model.StockNumDTO;
 import com.xust.mall.service.OrderService;
 import com.xust.mall.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,18 +217,18 @@ public class OrderServiceImpl implements OrderService {
         //删除购物项
         if(!CollectionUtils.isEmpty(itemList) && !CollectionUtils.isEmpty(goodsIds) && !CollectionUtils.isEmpty(goods)){
             if(shoppingCartItemMapper.deleteBatch(itemList) > 0){
-                List<StockNum> stockNums = BeanUtil.copyList(shoppingCartTemVOList,StockNum.class);
+                List<StockNumDTO> stockNums = BeanUtil.copyList(shoppingCartTemVOList,StockNumDTO.class);
                 int updateStockResult = goodsMapper.updateStockNum(stockNums);
 
                 if(updateStockResult < 1){
                     MallException.fail(ServiceResultEnum.SHOPPING_ITEM_COUNT_ERROR.getMessage());
                 }
                 //订单号生成
-                String orderNo = NumberUtil.getOrderNo();
+                String orderNo = NumberUtil.genOrderNo();
                 int priceTotal = 0;
                 //保存订单
                 Order order = new Order();
-                order.setOrderId(userVO.getUserId());
+                order.setUserId(userVO.getUserId());
                 order.setOrderNo(orderNo);
                 order.setUserAddress(userVO.getAddress());
                 //总价
