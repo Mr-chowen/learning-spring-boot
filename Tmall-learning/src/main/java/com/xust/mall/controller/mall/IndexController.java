@@ -34,14 +34,14 @@ public class IndexController {
             return "error/error_5xx";
         }
         List<IndexCarouselVO> carouselVOS = carouselService.getCarouselForIndex(ConstantsUtil.INDEX_CAROUSEL_NUMBER);
-        List<IndexGoodsConfigVO> hotGoods = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_HOT.getType(),ConstantsUtil.INDEX_GOODS_HOT_NUMBER);
-        List<IndexGoodsConfigVO> newGoods = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_NEW.getType(),ConstantsUtil.INDEX_GOODS_NEW_NUMBER);
-        List<IndexGoodsConfigVO> recommendGoods = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_RECOMMOND.getType(),ConstantsUtil.INDEX_GOODS_RECOMMOND_NUMBER);
+        List<IndexGoodsConfigVO> hotGoodses = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_HOT.getType(),ConstantsUtil.INDEX_GOODS_HOT_NUMBER);
+        List<IndexGoodsConfigVO> newGoodses = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_NEW.getType(),ConstantsUtil.INDEX_GOODS_NEW_NUMBER);
+        List<IndexGoodsConfigVO> recommendGoodses = indexConfigService.getConfigGoodsForIndex(IndexConfigTypeEnum.INDEX_GOODS_RECOMMOND.getType(),ConstantsUtil.INDEX_GOODS_RECOMMOND_NUMBER);
         request.setAttribute("categories", categoryVOS);//分类数据
         request.setAttribute("carousels", carouselVOS);//轮播图
-        request.setAttribute("hotGoodses", hotGoods);//热销商品
-        request.setAttribute("newGoodses", newGoods);//新品
-        request.setAttribute("recommendGoodses", recommendGoods);//推荐商品
+        request.setAttribute("hotGoodses", hotGoodses);//热销商品
+        request.setAttribute("newGoodses", newGoodses);//新品
+        request.setAttribute("recommendGoodses", recommendGoodses);//推荐商品
         return "mall/index";
     }
 }

@@ -122,7 +122,7 @@ public class ShoppingCartController {
         MallUserVO mallUserVO = (MallUserVO) session.getAttribute(ConstantsUtil.MALL_USER_SESSION_KEY);
         List<ShoppingCartItemVO> shoppingCartItemVOS = shoppingCartService.getMyShoppingCartItems(mallUserVO.getUserId());
         if(CollectionUtils.isEmpty(shoppingCartItemVOS)){
-            return "/shop-cart";
+            return "mall/cart";
         } else {
             for(ShoppingCartItemVO shoppingCartItemVO : shoppingCartItemVOS){
                 priceTotal += shoppingCartItemVO.getGoodsCount() * shoppingCartItemVO.getSellingPrice();

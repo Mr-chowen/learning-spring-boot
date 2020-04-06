@@ -347,7 +347,7 @@ public class OrderServiceImpl implements OrderService {
         if(order != null){
             //验证是否是当前用户下的订单及订单状态判断
             if(orderMapper.closeOrder(Collections.singletonList(order.getOrderId()),OrderStatusEnum.ORDER_CLOSED_BY_MALLUSER.getOrderStatus()) >0){
-                return ServiceResultEnum.SHOPPING_ITEM_ERROR.getMessage();
+                return ServiceResultEnum.SUCCESS.getMessage();
             } else {
                 return ServiceResultEnum.DB_ERROR.getMessage();
             }
