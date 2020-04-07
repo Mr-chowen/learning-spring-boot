@@ -1,6 +1,5 @@
 package com.xust.mall.vo;
 
-import lombok.Data;
 
 import java.io.Serializable;
 

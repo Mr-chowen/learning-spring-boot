@@ -1,13 +1,9 @@
 package com.xust.mall.common.utils;
 
-import lombok.Data;
-import lombok.ToString;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Data
-@ToString
 public class PageUtil extends LinkedHashMap<String,Object> {
     //当前页码
     private int page;
@@ -25,4 +21,27 @@ public class PageUtil extends LinkedHashMap<String,Object> {
         this.put("limit", limit);
     }
 
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    @Override
+    public String toString() {
+        return "PageUtil{" +
+                "page=" + page +
+                ", limit=" + limit +
+                '}';
+    }
 }

@@ -1,17 +1,8 @@
 package com.xust.mall.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-@Data
-@ToString
-@NoArgsConstructor
-@Accessors(chain = true)
 public class CommonResult<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -21,8 +12,39 @@ public class CommonResult<T> implements Serializable {
 
     private T data;
 
+    public CommonResult() {
+    }
+
     public CommonResult(int resultCode, String message) {
         this.resultCode = resultCode;
         this.message = message;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getResultCode() {
+        return resultCode;
+    }
+
+    public void setResultCode(int resultCode) {
+        this.resultCode = resultCode;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }
