@@ -20,10 +20,11 @@ spring:
     timeout: 3000ms # 连接超时时间（毫秒）
   data:
     elasticsearch:
+      client:
+        reactive:
+          username: LAPTOP-ONUTI4FG
       cluster-name: elasticsearch
       cluster-nodes: 127.0.0.1:9300
-      repositories:
-        enabled: true
   elasticsearch:
     rest:
       uris: http://localhost:9200
@@ -35,11 +36,15 @@ spring:
     password: mall
     publisher-returns: true
 
+mongodb:
+  host: localhost # mongodb的连接地址
+  port: 27017 # mongodb的连接端口号
+  database: alibaba # mongodb的连接的数据库
 
 mybatis:
   mapper-locations:
   - classpath:mapper/*.xml
-  - classpath*:com/*/mapper/*.xml
+  - classpath:com/*/mapper/*.xml
 
 ## 自定义redis key
 redis:
